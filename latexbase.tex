@@ -1,0 +1,131 @@
+\documentclass[12pt, oneside]{article}
+
+
+% You may add the packages you need here
+\usepackage{amssymb,amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{textpos}
+\usepackage{wrapfig}
+\usepackage{fancyhdr}
+
+
+%Suppert for languages requireing UTF-8 and T1, such as Nordic
+\usepackage[utf8]{inputenc}     
+\usepackage[T1]{fontenc}
+\usepackage[finnish]{babel} 
+
+% Used to format code
+% Pygments must be installed separately
+% https://code.google.com/p/minted/
+\usepackage{minted}
+
+%Side by side columns
+\usepackage{multicol}
+
+
+
+% Begin Document
+\begin{document}
+
+% package:fancyhdr - Header with text and page numbers
+\pagestyle{fancy}
+\lhead{ Your Name }
+\rhead{ \thepage}
+
+
+\begin{center}
+\textbf{\Large TITLE HERE}
+\end{center}
+
+\section*{I - Math examples}
+
+\subsection*{1. Basic Proof} 
+
+$(K_{12}, +)$ is a group simulating a 12-hourd clock. It contains the whole numbers of a from 1 to 12 and the operation $+$ allows adding times together. For example, $11+10 = 9$. Prove that $A = \{5, 10, 15\}$ is a subgroup of $(K_{15}, +)$. \\
+
+Proof: 
+
+\begin{center}
+\begin{tabular}{ l | l l l }
+ +   & 5   & 10 & 15 \\ \hline
+ 5   & 10 & 5   & 10 \\
+ 10 & 15 & 5   & 10 \\
+ 15 & 5   & 10 & 15 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{align*}
+&g,h \in A \rightarrow gh \in A	\tag{Closure} \\
+&15 * x = x * 15 = x, x \in K_{15} \text{ ja } 15 \in A \tag{Identity element of K in A} \\
+&5^{-1} = 10, 10^{-1} = 5 \text{ ja } 15^{-1} = 15 \tag{Each element's $(\in A)$ inverse $\in A$}
+\end{align*}
+\end{center}
+
+\subsection*{2. Matrices} 
+
+$\begin{bmatrix}
+1 & 1 & -1 \\
+0 & -1 & 1 \\
+ \end{bmatrix}
+ *
+ \begin{bmatrix}
+1 & 1 \\
+-1 & -1 \\
+-1 & 0
+ \end{bmatrix} \\ \\ \\
+ =
+  \begin{bmatrix}
+  1*1 + 1*(-1) + (-1)*(-1) & 1*1 + 1*(-1) + (-1) * 0\\
+  0*1 + (-1)*(-1) + 1*(-1) &  0*1 + (-1)*(-1) + 1*0\\
+ \end{bmatrix} \\ \\ \\
+ =
+ \begin{bmatrix}
+  1 & 0  \\
+  0 & 1
+ \end{bmatrix}$\\
+
+\pagebreak
+
+\subsection*{3. Multicolumns} 
+
+Prove that the operation $\odot$ can't be defined in the set of rational numbers followingly:
+
+$$\frac{m}{n} \odot \frac{k}{l} = \frac{m+k}{m^2+l^2}$$\\
+
+\noindent Clearly  $\frac{1}{1} = \frac{2}{2}$, however:
+
+\begin{multicols}{2}
+\begin{align*}
+\frac {m} {n} \odot \frac {k} {l} & = \frac{m+k}{m^2+l^2}\\
+& = \frac{1+1}{1^2+1^2} \\
+& = \frac{2}{2} 
+\end{align*}
+
+\columnbreak
+
+\begin{align*}
+\frac {m} {n} \odot \frac {k} {l} & = \frac{m+k}{m^2+l^2}\\
+& = \frac{2+2}{2^2+2^2} \\
+& = \frac{4}{8}
+\end{align*}
+\end{multicols}
+
+\pagebreak
+\section*{I - Code examples}
+
+\subsection*{4. Python code} 
+
+\begin{minted}{python}
+from random import randint
+
+def dice_probability_test(n):
+	numbers = [0, 0, 0, 0, 0, 0]
+	for i in range(1, n):
+		number = randint(1,6)-1
+		numbers[number] = numbers[number] + 1
+	return numbers
+\end{minted}
+
+
+\end{document}
